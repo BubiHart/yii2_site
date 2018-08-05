@@ -152,14 +152,14 @@ class SiteController extends Controller
         if (Yii::$app->user->isGuest) {
             return $this->actionLogin();
         }
-        
+
         $model = new UpdateForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             $model->update_user_data();
 
-            return $this->render('index', ['model' => $model]);
+            return $this->redirect(['site/index']);
         } else {
             // either the page is initially displayed or there is some validation error
             return $this->render('update', ['model' => $model]);
