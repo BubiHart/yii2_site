@@ -102,7 +102,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
             $model->insert_user_data($model->login, $model->password);
-            return $this->render('index', ['model' => $model]);
+            return $this->redirect(['site/index']);
         } else {
             // either the page is initially displayed or there is some validation error
             return $this->render('entry', ['model' => $model]);
